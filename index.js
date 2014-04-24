@@ -37,14 +37,14 @@ Emitter(invite);
  */
 
 function invite(user) {
-	return function(address, project) {
-		var key = crypto.createHmac("md5", project || user);
-		var hash = key.update(address).digest('base64');
+  return function(address, project) {
+    var key = crypto.createHmac("md5", project || user);
+    var hash = key.update(address).digest('base64');
     invite.emit('invite', user, project, address, hash);
     invite.emit('invite ' + user, project, address, hash);
-		create(user, project, address, hash);
-		return hash;
-	};
+    create(user, project, address, hash);
+    return hash;
+  };
 }
 
 /**
@@ -62,11 +62,11 @@ function invite(user) {
  */
 
 function create(user, project, address, hash) {
-	var field = 'invite:' + user;
-	var db = project ? (field + ':' + project) : field;
-	client.hset(db, hash, address, function(err, res) {
-		if(err) return;
-		invite.emit('created', user, project, address, hash);
-		invite.emit('created ' + user, project, address, hash);
-	});
+  var field = 'invite:' + user;
+  var db = project ? (field + ':' + project) : field;
+  client.hset(db, hash, address, function(err, res) {
+    if(err) return;
+    invite.emit('created', user, project, address, hash);
+    invite.emit('created ' + user, project, address, hash);
+  });
 }

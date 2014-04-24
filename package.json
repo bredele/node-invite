@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/bredele/node-invite",
   "devDependencies": {
-    "mocha": "^1.18.2"
+    "mocha": "^1.18.2",
+    "nodemailer": "^0.6.3"
   },
   "dependencies": {
     "redis": "^0.10.1",

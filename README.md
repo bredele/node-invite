@@ -46,7 +46,7 @@ user.on('created', function(user, project, address, hash) {
 invite('foo@bar.com');
 ```
 
-  > ideal to pipe invite with a send mail system.
+  > ideal to pipe invite with a send mail system (see [example](https://github.com/bredele/node-invite/blob/master/examples/mail/server.js)).
 
 ## License
 

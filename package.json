@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/bredele/node-invite/issues"
   },
-  "homepage": "https://github.com/bredele/node-invite"
+  "homepage": "https://github.com/bredele/node-invite",
+  "devDependencies": {
+    "mocha": "^1.18.2"
+  }
 }

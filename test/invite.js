@@ -36,7 +36,7 @@ describe("basic", function() {
 	describe('emitter', function() {
 
 		it('should listen when invite has been created', function(done) {
-			pkg.once('invite', function() {
+			pkg.once('created', function() {
 				done();
 			});
 			invite(address);
@@ -44,7 +44,7 @@ describe("basic", function() {
 
 		it('should emit all the invite information', function(done) {
 			var key = crypto.createHmac('md5', 'beep');
-			pkg.once('invite', function(user, project, client, hash) {
+			pkg.once('created', function(user, project, client, hash) {
 				if(user !== 'bredele') done('wrong user');
 				if(project !== 'beep') done('wrong project');
 				if(client !== address) done('wrong email address');

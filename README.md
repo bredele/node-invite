@@ -1,7 +1,50 @@
 node-invite
 ===========
 
-Invitation system backend by nodejs and redis
+Invitation system  build for speed.
+
+## Installation
+
+
+with [nodejs](http://nodejs.org):
+
+	$ npm install invite
+
+
+## Usage
+
+  Invite crypt and return a uniq key for each invitation.
+
+```js
+var invite = require('invite')('foo');
+
+var key = invite('beep@boop.com');
+```
+
+  You can invite someone to join a project/organization:
+
+```js
+invite('john@doe.com', 'myproject');
+```
+
+  Each invitation is backend by redis and you get feedbacks when a uniq key has been created and/or stored:
+
+```js
+var user = require('invite');
+var invite = user('bredele');
+
+// uniq key has been created
+user.on('invite', function(user, project, address, hash) {
+	// do something
+});
+
+// key has been stored in redis
+user.on('created', function(user, project, address, hash) {
+  // so somthing
+});
+
+invite('foo@bar.com');
+```
 
 
 ## License

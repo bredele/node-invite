@@ -5,6 +5,7 @@
  */
 
 var crypto = require('crypto');
+var redis = require('redis');
 
 /**
  * Expose 'invite'
@@ -12,13 +13,12 @@ var crypto = require('crypto');
 
 module.exports = invite;
 
-
 /**
  * invite constructor.
  * @api public
  */
 
-function invite(user) {
+function invite(user, options) {
 	return function(address, project) {
 		var key = crypto.createHmac("md5", project || user);
 		return key.update(address).digest('base64');

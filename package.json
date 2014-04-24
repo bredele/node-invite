@@ -24,5 +24,9 @@
   "homepage": "https://github.com/bredele/node-invite",
   "devDependencies": {
     "mocha": "^1.18.2"
+  },
+  "dependencies": {
+    "redis": "^0.10.1",
+    "hiredis": "^0.1.16"
   }
 }

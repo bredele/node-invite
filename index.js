@@ -6,12 +6,17 @@
 
 var crypto = require('crypto');
 var redis = require('redis');
+var Emitter = require('component-emitter');
 
 /**
  * Expose 'invite'
  */
 
 module.exports = invite;
+
+// invite is an emitter
+
+Emitter(invite);
 
 /**
  * invite constructor.
@@ -20,7 +25,11 @@ module.exports = invite;
 
 function invite(user, options) {
 	return function(address, project) {
-		var key = crypto.createHmac("md5", project || user);
-		return key.update(address).digest('base64');
+		var pwd = project || user;
+		var key = crypto.createHmac("md5", pwd);
+		var hash = key.update(address).digest('base64');
+		invite.emit('invite', user, pwd, address, hash);
+		invite.emit('invite ' + user, pwd, address, hash);
+		return hash;
 	};
 }

@@ -24,6 +24,13 @@ describe("basic", function() {
 			var key = invite(address);
 			assert.equal(key, hash.update(address).digest('base64'));
 		});
+
+		it('should encode base64 key with an optional project', function() {
+			var hash = crypto.createHmac('md5', 'project');
+			var key = invite(address, 'project');
+			assert.equal(key, hash.update(address).digest('base64'));
+		});
+
 	});
 	
 

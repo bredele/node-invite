@@ -21,7 +21,7 @@ var invite = require('invite')('foo');
 var key = invite('beep@boop.com');
 ```
 
-  You can invite someone to join a project/organization:
+  You can invite someone to join a project/organization/room:
 
 ```js
 invite('john@doe.com', 'myproject');
@@ -46,6 +46,7 @@ user.on('created', function(user, project, address, hash) {
 invite('foo@bar.com');
 ```
 
+  > ideal to pipe invite with a send mail system.
 
 ## License
 

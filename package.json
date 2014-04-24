@@ -1,6 +1,6 @@
 {
   "name": "invite",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Invitation system backend by nodejs and redis",
   "main": "index.js",
   "scripts": {
